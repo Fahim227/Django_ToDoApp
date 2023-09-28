@@ -11,6 +11,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import todoSerializer
 # Create your views here.
+
+def portfolio_index(request):
+    return render(request, 'todos/index-02.html')
+
+
 @login_required
 def index(request):
     all_todos =  todo.objects.filter(user_id = request.user)

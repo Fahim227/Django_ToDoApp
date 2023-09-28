@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+print("BASE ======================= {}".format(BASE_DIR))
 
 
 # Quick-start development settings - unsuitable for production
@@ -71,16 +72,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ToDoProject.wsgi.application'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static")
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'todos',
-        'USER' : 'postgres',
-        'PASSWORD' : '1234',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '',
+        'USER' : '',
+        'PASSWORD' : '',
         'HOST' : 'localhost'
     }
 }
@@ -123,3 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+MEDIA_ROOT =  os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
